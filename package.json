@@ -1,0 +1,15 @@
+{
+  "name": "frontyjs",
+  "version": "0.0.0",
+  "description": "Set of tools to orchestrate micro-frontend applications",
+  "main": "index.js",
+  "engines": {
+    "node": ">=10.0.0",
+    "yarn": ">=1.6.0"
+  },
+  "scripts": {},
+  "repository": "git@github.com:frontyjs/fronty",
+  "author": "Dor Kleiman <configurator@gmail.com>, Alon Valadji <alon@ronin.co.il>",
+  "license": "MIT",
+  "workspaces": []
+}
