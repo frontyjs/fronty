@@ -1,6 +1,6 @@
 # fronty
 
-> A set of tool designed to orchestrate micro-frontend apps
+> A set of tools designed to orchestrate micro-frontend apps
 
 ## Abstract
 
