@@ -11,13 +11,13 @@ The team also want to supply only their UI part, who is complient with the Produ
 
 In microservices we have a pattern called [Server-side page fragment composition](http://microservices.io/patterns/ui/server-side-page-fragment-composition.html), so that team can supply only their fragment dealing only with their microservice.
 
-Fonry will help to compose a SPA experience front-end solution, collection all the neccesary fragments from our microservices.
+Fronty will help to compose a SPA experience front-end solution, collection all the neccesary fragments from our microservices.
 
 ## Concepts
 
 ### Core
 
-### Registry
+### [Registry](./concepts/registry.md)
 
 ### Discovery
 
