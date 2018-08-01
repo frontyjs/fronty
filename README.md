@@ -15,6 +15,8 @@ Fonry will help to compose a SPA experience front-end solution, collection all t
 
 ## Concepts
 
+### Core
+
 ### Registry
 
 ### Discovery
@@ -27,7 +29,14 @@ Fonry will help to compose a SPA experience front-end solution, collection all t
 
 ### Transitions
 
+### Messaging?
+
+### State
+
+### Lifecycle
+
 ## Installation
+
 
 ```bash
 # npm
