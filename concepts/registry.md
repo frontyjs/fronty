@@ -12,4 +12,8 @@ When registering an app, you may include the following
 2. App URL for inner routing
 3. App resource URL - Url where the app is loaded from
  
+ All app resources needs to come fro mthe same origin.
+ This can be achieved by using a reverse proxy of your own, or 
+ by using our solution.
+ 
  
