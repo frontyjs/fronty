@@ -9,14 +9,22 @@ module.exports = {
 	},
 
 	output: {
-		publicPath: '/content/'
+		publicPath: '/content'
 	},
 
 	context,
 
+	module: {
+		rules: [{
+			test: /\.css$/,
+			use: ['style-loader', 'css-loader']
+		}]
+	},
+
 	plugins: [
 		new HtmlPlugin({
-			title: 'Content'
+			title: 'Content',
+			viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
 		})
 	]
 };
