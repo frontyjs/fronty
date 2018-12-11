@@ -1,4 +1,4 @@
-import { register, init, apps } from '@frontyjs/core';
+import { register, init } from '@frontyjs/core';
 import headerApp from '@frontyjs/header';
 
 import './style.css';
@@ -22,6 +22,12 @@ register({
   type: 'iframe'
 });
 
+register({
+  name: 'footer',
+  url: '/footer',
+  type: 'iframe'
+});
+
 register(headerApp);
 
 register({
@@ -35,5 +41,5 @@ register({
 });
 
 init()
-  .then(() => console.log(apps))
+  .then((fronty) => console.log(fronty.apps))
   .catch(console.error);

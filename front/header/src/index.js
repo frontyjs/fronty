@@ -8,9 +8,9 @@ const list = [
 export default {
   name: 'header',
   type: 'js',
-  onMount(el, apps) {
+  onMount(el, fronty) {
     el.innerHTML = `<ul class="menu">${list.join('')}</ul>`;
 
-    apps.get('api').alert(list);
+    fronty.apps.get('api').alert(list);
   }
 };

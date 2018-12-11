@@ -9,6 +9,9 @@ div.innerHTML = `
 </p>
 
 <p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque debitis dolores est harum ipsa molestias perspiciatis, quia voluptatum! At cupiditate eum iusto nemo odio quam recusandae saepe velit voluptas voluptate!
+</p>
+<p>
 	Go to <a href="/about">About Us</a> page.
 </p>
 `;
@@ -41,8 +44,8 @@ style.innerText = css;
 document.head.appendChild(style);
 
 (async () => {
-  if (!apps.has('api')) return;
-  const text = await apps.get('api').getText();
+  if (!fronty.apps.has('api')) return;
+  const text = await fronty.apps.get('api').getText();
 
   console.log(text);
 })();

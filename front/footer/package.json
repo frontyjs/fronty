@@ -2,5 +2,22 @@
   "name": "@frontyjs/footer",
   "version": "1.0.0",
   "main": "./src",
-  "license": "MIT"
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot --inline --port 4040"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
 }
