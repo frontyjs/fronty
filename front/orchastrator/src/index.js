@@ -14,6 +14,17 @@ const apiApp = {
   }
 };
 
-init(headerApp, apiApp)
-  .then(fronty => console.log(fronty.apps))
-  .catch(console.error);
+(async () => {
+  const fronty = await init(headerApp, apiApp);
+
+  console.log(fronty.apps);
+
+  [
+    { title: 'Home', url: '/' },
+    { title: 'About', url: '/about' },
+    { title: 'Services', url: '/services' },
+    { title: 'Contact Us', url: '/contact-us' }
+  ].forEach(fronty.apps.get('header').addMenuItem)
+
+})();
+

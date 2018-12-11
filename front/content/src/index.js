@@ -14,11 +14,15 @@ div.innerHTML = `
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque debitis dolores est harum ipsa molestias perspiciatis, quia voluptatum! At cupiditate eum iusto nemo odio quam recusandae saepe velit voluptas voluptate!
 </p>
 <p>
-	Go to <a href="/about">About Us</a> page.
+	<button>Add Menu Item</button>
 </p>
 `;
 
 document.body.appendChild(div);
+const button = document.querySelector('button');
+button.addEventListener('click', e => {
+  window.fronty.apps.get('header').addMenuItem({ title: 'New Menu', url: '/new-menu-item' });
+});
 
 (async () => {
   if (!fronty.apps.has('api')) return;

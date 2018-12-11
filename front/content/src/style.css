@@ -15,3 +15,10 @@ p {
 a {
 	color: yellow;
 }
+
+button {
+	padding: 10px;
+	font-size: 14px;
+	background: yellow;
+
+}
