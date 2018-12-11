@@ -1,0 +1,9 @@
+{
+  "name": "@frontyjs/core",
+  "version": "1.0.0",
+  "main": "./src",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
