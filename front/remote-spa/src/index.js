@@ -7,7 +7,8 @@ const reactApp = {
   onMount({ container, fronty }) {
     const button = document.createElement('button');
     button.innerText = 'Open Modal';
-    button.onclick = () => fronty.apps.get('modal').open(`Hello from React App!`);
+    button.onclick = () =>
+      fronty.apps.get('modal').open(`Hello from React App!`);
     container.appendChild(button);
   }
 };
@@ -19,7 +20,9 @@ const modalApp = {
   open(text) {
     this.div.className = 'modal';
     this.div.innerHTML = `<section><h1>${text}</h1><button>Close</button></section>`;
-    this.div.querySelector('button').addEventListener('click', this.close.bind(this));
+    this.div
+      .querySelector('button')
+      .addEventListener('click', this.close.bind(this));
 
     document.body.prepend(this.div);
   },

@@ -20,7 +20,7 @@
     "prettier": "^1.15.3"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 80,
     "singleQuote": true,
     "endOfLine": "lf"
   }

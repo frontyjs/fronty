@@ -16,11 +16,15 @@ const register = ({ id, ...options }) => {
 };
 
 const init = async (...apps) => {
-  const nodes = Array.from(document.querySelectorAll('fronty-app')).map(({ attributes = { length: 0 } }) =>
-    Array.from(attributes).reduce((acc, { name, value }) => {
-      acc[name] = value;
-      return acc;
-    }, {})
+  const nodes = Array.from(document.querySelectorAll('fronty-app')).map(
+    container =>
+      Array.from(container.attributes).reduce(
+        (acc, { name, value }) => {
+          acc[name] = value;
+          return acc;
+        },
+        { container }
+      )
   );
 
   apps.push(...nodes);
@@ -28,9 +32,7 @@ const init = async (...apps) => {
   apps.forEach(register);
 
   for (const [id, options] of fronty.apps) {
-    const container = document.getElementById(id);
-    options.container = container;
-    const { url, type = 'iframe', onMount } = options;
+    const { url, type = 'iframe', container, onMount } = options;
 
     const applyType = types[type];
 

@@ -1,6 +1,12 @@
 import { load } from 'cheerio';
 
-export const iframe = async ({ id, container, url, fronty, onMount = () => {} }) => {
+export const iframe = async ({
+  id,
+  container,
+  url,
+  fronty,
+  onMount = () => {}
+}) => {
   if (!url) {
     url = `/${id}`;
   }
@@ -16,7 +22,9 @@ export const iframe = async ({ id, container, url, fronty, onMount = () => {} })
 
   const $ = load(source);
 
-  $('head').prepend($('<base />').attr('href', url + '/')).html();
+  $('head')
+    .prepend($('<base />').attr('href', url + '/'))
+    .html();
 
   iFrame.contentDocument.open().write($.html());
   iFrame.contentDocument.close();

@@ -24,7 +24,5 @@ const apiApp = {
     { title: 'About', url: '/about' },
     { title: 'Services', url: '/services' },
     { title: 'Contact Us', url: '/contact-us' }
-  ].forEach(fronty.apps.get('header').addMenuItem)
-
+  ].forEach(fronty.apps.get('header').addMenuItem);
 })();
-
