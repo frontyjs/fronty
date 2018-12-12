@@ -17,11 +17,18 @@
     "front/*"
   ],
   "devDependencies": {
-    "prettier": "^1.15.3"
+    "husky": "^1.2.0",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0"
   },
   "prettier": {
     "printWidth": 80,
     "singleQuote": true,
     "endOfLine": "lf"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
