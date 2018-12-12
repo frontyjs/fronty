@@ -31,13 +31,13 @@ const init = async (...apps) => {
 
   apps.forEach(register);
 
-  for (const [id, options] of fronty.apps) {
-    const { url, type = 'iframe', container, onMount } = options;
+  for (const [id, app] of fronty.apps) {
+    const { url, type = 'iframe', container, onMount } = app;
 
     const applyType = types[type];
 
     try {
-      if (applyType) await applyType({ container, url, fronty, id, onMount });
+      if (applyType) await applyType({ container, url, fronty, id, app, onMount });
     } catch (e) {
       console.error(e);
     }

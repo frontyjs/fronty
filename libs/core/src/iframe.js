@@ -1,12 +1,6 @@
-import { load } from 'cheerio';
+import cheerio from 'cheerio';
 
-export const iframe = async ({
-  id,
-  container,
-  url,
-  fronty,
-  onMount = () => {}
-}) => {
+export const iframe = async ({ id, container, url, fronty, onMount, app }) => {
   if (!url) {
     url = `/${id}`;
   }
@@ -20,7 +14,7 @@ export const iframe = async ({
   const request = await fetch(url);
   const source = await request.text();
 
-  const $ = load(source);
+  const $ = cheerio.load(source);
 
   $('head')
     .prepend($('<base />').attr('href', url + '/'))
@@ -30,14 +24,17 @@ export const iframe = async ({
   iFrame.contentDocument.close();
 
   iFrame.contentWindow.addEventListener('DOMContentLoaded', e => {
-    onMount({ container, fronty });
+    const params = { container, fronty, app, frame: iFrame };
+
+    onMount = onMount || iFrame.contentWindow.onMount;
+    if(onMount) onMount(params);
   });
 
   iFrame.contentWindow.addEventListener('unload', async e => {
     container.removeChild(iFrame);
 
     try {
-      await iframe({ id, container, url, fronty });
+      await iframe({ id, container, url, fronty, app });
     } catch (e) {
       console.error(e);
     }

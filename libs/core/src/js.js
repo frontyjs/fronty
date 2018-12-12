@@ -1,3 +1,3 @@
-export const js = ({ container, onMount = () => {}, fronty }) => {
-  onMount({ container, fronty });
+export const js = ({ container, onMount = () => {}, app, fronty }) => {
+  onMount({ container, fronty, app });
 };

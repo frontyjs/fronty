@@ -9,6 +9,8 @@ document.querySelector('button').addEventListener('click', e => {
   window.fronty.apps.get('header').addMenuItem({ title, url });
 });
 
+window.onMount = params => console.log(params);
+
 (async () => {
   if (!fronty.apps.has('api')) return;
   const text = await fronty.apps.get('api').getText();
