@@ -24,7 +24,8 @@ module.exports = {
 	plugins: [
 		new HtmlPlugin({
 			title: 'Content',
-			viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+			viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+			template: 'index.html'
 		})
 	]
 };
