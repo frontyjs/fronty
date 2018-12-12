@@ -29,6 +29,7 @@ const init = async (...apps) => {
 
   for (const [id, options] of fronty.apps) {
     const container = document.getElementById(id);
+    options.container = container;
     const { url, type = 'iframe', onMount } = options;
 
     const applyType = types[type];
