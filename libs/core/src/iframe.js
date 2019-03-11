@@ -17,7 +17,7 @@ export const iframe = async ({
   replaceElement
 }) => {
   if (!url) {
-    url = `/${id}`;
+    throw new Error('Must supply url for iframe');
   }
 
   // Render the iframe
