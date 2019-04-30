@@ -14,7 +14,8 @@
   "license": "MIT",
   "workspaces": [
     "libs/*",
-    "front/*"
+    "examples/*",
+    "examples/x/*"
   ],
   "devDependencies": {
     "husky": "^1.2.0",
