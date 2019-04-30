@@ -65,6 +65,13 @@ export const iframe = async ({
   iWindow.addEventListener('hashchange', () => {
     console.log('onhashchange');
     const hash = iWindow.document.location.hash || '#';
+    if (hash.startsWith('#fronty/')) {
+      // If the hash starts with fronty/, it is a commant to fronty to navigate on _other_ apps
+      const [, target, location] = hash.split('/', 3);
+      fronty.apps[target].window.document.location.hash = location;
+      return;
+    }
+
     const qs = parseQuerystring();
     qs.set(id, hash.substring(1));
     window.history.replaceState({}, '', qsToURL(qs));
