@@ -1,5 +1,6 @@
 {
   "name": "frontyjs",
+  "private": true,
   "version": "0.0.0",
   "description": "Set of tools to orchestrate micro-frontend applications",
   "main": "index.js",
@@ -11,5 +12,23 @@
   "repository": "git@github.com:frontyjs/fronty",
   "author": "Dor Kleiman <configurator@gmail.com>, Alon Valadji <alon@ronin.co.il>",
   "license": "MIT",
-  "workspaces": []
+  "workspaces": [
+    "libs/*",
+    "front/*"
+  ],
+  "devDependencies": {
+    "husky": "^1.2.0",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "endOfLine": "lf"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }

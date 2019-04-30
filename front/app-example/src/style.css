@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html {
+	display: flex;
+	height: 100vh;
+}
+
+html * {
+	box-sizing: border-box;
+}
+
+body {
+	font: 16px Lato, sans-serif;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+}
+
+#header {
+	height: 60px;
+	background: #ececec;
+	flex: 0 0 auto;
+	padding: 20px;
+}
+
+#content {
+	display: flex;
+	flex: 1;
+	background: #333;
+}
+
+iframe {
+	border: 0;
+	flex: 1;
+}
+
+#header .menu {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	max-width: 800px;
+	margin: auto
+}
+
+#header .menu li.separator {
+	width: 2px;
+	border-right: 1px solid #000;
+	border-left: 1px solid #888;
+	height: 100%;
+}
+
+#header .menu li a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #333;
+}
+
+#header .menu li a:hover {
+	color: #666;
+}
+
+#footer {
+	height: 60px;
+	display: flex;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@frontyjs/core",
+  "version": "1.0.0",
+  "main": "./src",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "jest": "^23.6.0"
+  }
+}
