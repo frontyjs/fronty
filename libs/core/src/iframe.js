@@ -66,12 +66,16 @@ export const iframe = async ({
     const hash = iWindow.document.location.hash || '#';
     if (hash.startsWith('#fronty/')) {
       // If the hash starts with fronty/, it is a commant to fronty to navigate on _other_ apps
-      const [, target, ...location] = hash.split('/');
-      fronty.apps.get(target).window.document.location.hash = location.join(
-        '/'
-      );
-      console.log(`Setting url on ${target} to #${location.join('/')}`);
+      const [, target, ...locationParts] = hash.split('/');
+      const location = locationParts.join('/');
+      const targetApp = fronty.apps.get(target);
+      targetApp.window.document.location.hash = location;
+      console.log(`Setting url on ${target} to #${location}`);
       iWindow.document.location.hash = '#';
+
+      if (targetApp.onNavigate) {
+        targetApp.onNavigate(target, location);
+      }
       return;
     }
 

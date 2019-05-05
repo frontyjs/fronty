@@ -8,5 +8,8 @@ export const Menu = () => (
     <li>
       <a href="#fronty/legacy/!/contact-us">Contact us</a>
     </li>
+    <li>
+      <a href="#fronty/about-us">About our wonderful company</a>
+    </li>
   </ul>
 );

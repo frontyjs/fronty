@@ -26,6 +26,26 @@
         flex: 1;
       }
 
+      fronty-app#about-us {
+        flex: 1;
+      }
+
+      body[state='legacy'] fronty-app#legacy {
+        display: flex;
+      }
+
+      body[state='legacy'] fronty-app#about-us {
+        display: none;
+      }
+
+      body[state='about-us'] fronty-app#legacy {
+        display: none;
+      }
+
+      body[state='about-us'] fronty-app#about-us {
+        display: flex;
+      }
+
       fronty-app {
         display: flex;
       }
@@ -36,10 +56,23 @@
       }
     </style>
   </head>
-  <body>
+  <body state="legacy">
     <fronty-app id="modern" url="modern"></fronty-app>
     <fronty-app id="legacy" url="legacy"></fronty-app>
+    <fronty-app id="about-us" url="about-us.html"></fronty-app>
 
     <script src="../dist/fronty.js"></script>
+
+    <script>
+      const setState = app => () => {
+        console.log('setState');
+        document.body.setAttribute('state', app);
+      };
+
+      window.addEventListener('fronty.autoinit', () => {
+        fronty.apps.get('legacy').onNavigate = setState('legacy');
+        fronty.apps.get('about-us').onNavigate = setState('about-us');
+      });
+    </script>
   </body>
 </html>

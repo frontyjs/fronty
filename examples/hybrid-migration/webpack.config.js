@@ -1,7 +1,7 @@
 module.exports = [
   // Fronty itself
   {
-    mode: 'production',
+    mode: 'development',
     entry: {
       fronty: '@frontyjs/core/src/index.js'
     }
