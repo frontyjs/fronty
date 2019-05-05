@@ -63,12 +63,15 @@ export const iframe = async ({
   // When changing the page inside an app, update the current url to point
   // to the correct location - fronty/?app=url
   iWindow.addEventListener('hashchange', () => {
-    console.log('onhashchange');
     const hash = iWindow.document.location.hash || '#';
     if (hash.startsWith('#fronty/')) {
       // If the hash starts with fronty/, it is a commant to fronty to navigate on _other_ apps
-      const [, target, location] = hash.split('/', 3);
-      fronty.apps[target].window.document.location.hash = location;
+      const [, target, ...location] = hash.split('/');
+      fronty.apps.get(target).window.document.location.hash = location.join(
+        '/'
+      );
+      console.log(`Setting url on ${target} to #${location.join('/')}`);
+      iWindow.document.location.hash = '#';
       return;
     }
 
@@ -90,4 +93,7 @@ export const iframe = async ({
   iWindow.addEventListener('unload', async e => {
     await iframe({ id, container, url, fronty, app, replaceElement: iFrame });
   });
+
+  app.window = iWindow;
+  app.iframe = iFrame;
 };
