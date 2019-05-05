@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   console.log(nodes);
 
-  init(nodes);
+  init(...nodes);
 });
 
 class Fronty extends HTMLElement {
