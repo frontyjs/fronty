@@ -1,5 +1,5 @@
 {
-  "name": "@frontyjs/remote-spa",
+  "name": "@frontyjs/todos",
   "version": "1.0.0",
   "main": "./src",
   "license": "MIT",
