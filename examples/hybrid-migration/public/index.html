@@ -18,17 +18,27 @@
       }
 
       fronty-app#modern {
-        height: 150px;
+        height: 250px;
+        border-bottom: 1px solid purple;
       }
 
       fronty-app#legacy {
         flex: 1;
       }
+
+      fronty-app {
+        display: flex;
+      }
+
+      fronty-app > iframe {
+        flex: 1;
+        border: none;
+      }
     </style>
   </head>
   <body>
-    <fronty-app id="modern" url="modern.html"></fronty-app>
-    <fronty-app id="legacy" url="legacy.html"></fronty-app>
+    <fronty-app id="modern" url="modern"></fronty-app>
+    <fronty-app id="legacy" url="legacy"></fronty-app>
 
     <script src="../dist/fronty.js"></script>
   </body>
