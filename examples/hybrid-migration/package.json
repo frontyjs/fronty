@@ -2,7 +2,9 @@
   "name": "hybrid-migration",
   "version": "1.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack"
+  },
   "dependencies": {
     "angular": "^1.4.5",
     "angular-ui-router": "^0.2.15",
