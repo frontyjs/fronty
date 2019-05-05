@@ -16,19 +16,6 @@ const register = ({ id, ...options }) => {
 };
 
 const init = async (...apps) => {
-  const nodes = Array.from(document.querySelectorAll('fronty-app')).map(
-    container =>
-      Array.from(container.attributes).reduce(
-        (acc, { name, value }) => {
-          acc[name] = value;
-          return acc;
-        },
-        { container }
-      )
-  );
-
-  apps.push(...nodes);
-
   apps.forEach(register);
 
   for (const [id, app] of fronty.apps) {
@@ -37,7 +24,8 @@ const init = async (...apps) => {
     const applyType = types[type];
 
     try {
-      if (applyType) await applyType({ container, url, fronty, id, app, onMount });
+      if (applyType)
+        await applyType({ container, url, fronty, id, app, onMount });
     } catch (e) {
       console.error(e);
     }
@@ -45,6 +33,22 @@ const init = async (...apps) => {
 
   return fronty;
 };
+
+window.addEventListener('DOMContentLoaded', () => {
+  const nodes = Array.from(document.querySelectorAll('fronty-app')).map(
+    container =>
+      Object.assign(
+        { container },
+        ...[...container.attributes].map(({ name, value }) => ({
+          [name]: value
+        }))
+      )
+  );
+
+  console.log(nodes);
+
+  init(nodes);
+});
 
 class Fronty extends HTMLElement {
   constructor() {
