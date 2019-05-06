@@ -33,8 +33,11 @@ bower_components
 build/Release
 
 # Dependency directories
+.idea
+dist
 node_modules/
 !examples/todos/public/*/node_modules
+!examples/todos/public/*/node_modules/*/dist
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -60,7 +63,3 @@ typings/
 
 # next.js build output
 .next
-
-# Websotrm
-.idea
-dist
