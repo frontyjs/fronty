@@ -18,7 +18,6 @@
       }
 
       fronty-app#modern {
-        height: 250px;
         border-bottom: 1px solid purple;
       }
 
@@ -69,9 +68,27 @@
         document.body.setAttribute('state', app);
       };
 
+      const resizeFrame = ({ window, container }) => {
+        const resize = () => {
+          container.style.height = 0; // required for height decrease
+          container.style.height =
+            window.document.documentElement.scrollHeight + 'px';
+        };
+
+        resize();
+        if (window.ResizeObserver) {
+          const observer = new window.ResizeObserver(resize);
+          observer.observe(window.document.documentElement);
+        } else {
+          setInterval(resize, 100);
+        }
+      };
+
       window.addEventListener('fronty.autoinit', () => {
         fronty.apps.get('legacy').onNavigate = setState('legacy');
         fronty.apps.get('about-us').onNavigate = setState('about-us');
+
+        resizeFrame(fronty.apps.get('modern'));
       });
     </script>
   </body>

@@ -100,4 +100,5 @@ export const iframe = async ({
 
   app.window = iWindow;
   app.iframe = iFrame;
+  app.container = container;
 };
