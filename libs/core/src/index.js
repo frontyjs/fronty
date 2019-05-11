@@ -1,7 +1,7 @@
 import { iframe } from './iframe';
 import { js } from './js';
 
-const fronty = (window.fronty = { apps: new Map() });
+const fronty = window.fronty || (window.fronty = { apps: new Map() });
 
 const types = { iframe, js };
 
