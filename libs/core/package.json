@@ -1,7 +1,7 @@
 {
   "name": "@fronty/core",
-  "version": "1.0.2",
-  "main": "./src",
+  "version": "1.0.3",
+  "main": "./dist/fronty.min.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack -p --mode production --devtool source-map --progress"
