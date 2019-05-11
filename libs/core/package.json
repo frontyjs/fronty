@@ -1,6 +1,6 @@
 {
   "name": "@fronty/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./src",
   "license": "MIT",
   "scripts": {
