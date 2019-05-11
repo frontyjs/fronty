@@ -1,5 +1,5 @@
 {
-  "name": "@frontyjs/todos",
+  "name": "@fronty-demo/todos",
   "version": "1.0.0",
   "main": "./src",
   "license": "MIT",
