@@ -2,6 +2,8 @@
 
 > A set of tools designed to orchestrate micro-frontend apps
 
+![Example](https://github.com/frontyjs/fronty/blob/assets/todos.gif)
+
 ## Abstract
 
 Fronty was designed in mind to help teams using microservices approach composing their UI layer the same as they are developing their backend services.
