@@ -30,5 +30,5 @@ yarn add @fronty/core
 Script tag:
 
 ```html
-<script src="https://unpkg.com/@fronty/core@latestdist/fronty.min.js" />
+<script src="https://unpkg.com/@fronty/core@latest/dist/fronty.min.js" />
 ```
