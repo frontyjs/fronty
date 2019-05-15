@@ -17,10 +17,18 @@ Fronty will help to compose a SPA experience front-end solution, collection all 
 
 ## Installation
 
-```
-# with npm
+NPM:
+```bash
 npm install @fronty/core
+```
 
-# or with yarn
+Yarn:
+```bash
 yarn add @fronty/core
+```
+
+Script tag:
+
+```html
+<script src="https://unpkg.com/@fronty/core@latestdist/fronty.min.js" />
 ```
