@@ -1,4 +1,5 @@
 # fronty
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 > A set of tools designed to orchestrate micro-frontend apps
 
@@ -32,3 +33,15 @@ Script tag:
 ```html
 <script src="https://unpkg.com/@fronty/core@latest/dist/fronty.min.js" />
 ```
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://www.ronin.co.il"><img src="https://avatars2.githubusercontent.com/u/846044?v=4" width="100px;" alt="Alon Valadji"/><br /><sub><b>Alon Valadji</b></sub></a><br /><a href="#ideas-alonronin" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/frontyjs/fronty/commits?author=alonronin" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
