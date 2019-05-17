@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "alonronin",
+      "name": "Alon Valadji",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/846044?v=4",
+      "profile": "http://www.ronin.co.il",
+      "contributions": [
+        "ideas",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "fronty",
+  "projectOwner": "frontyjs",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
