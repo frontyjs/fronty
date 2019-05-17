@@ -1,5 +1,5 @@
 # fronty
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 > A set of tools designed to orchestrate micro-frontend apps
 
@@ -40,7 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="http://www.ronin.co.il"><img src="https://avatars2.githubusercontent.com/u/846044?v=4" width="100px;" alt="Alon Valadji"/><br /><sub><b>Alon Valadji</b></sub></a><br /><a href="#ideas-alonronin" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/frontyjs/fronty/commits?author=alonronin" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="http://www.ronin.co.il"><img src="https://avatars2.githubusercontent.com/u/846044?v=4" width="100px;" alt="Alon Valadji"/><br /><sub><b>Alon Valadji</b></sub></a><br /><a href="#ideas-alonronin" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/frontyjs/fronty/commits?author=alonronin" title="Code">💻</a></td><td align="center"><a href="http://confi.gurator.com"><img src="https://avatars3.githubusercontent.com/u/671365?v=4" width="100px;" alt="Dor Kleiman"/><br /><sub><b>Dor Kleiman</b></sub></a><br /><a href="#ideas-configurator" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/frontyjs/fronty/commits?author=configurator" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
