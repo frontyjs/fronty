@@ -5,7 +5,7 @@
 
 > A set of tools designed to orchestrate micro-frontend apps
 
-![Example](https://github.com/frontyjs/fronty/blob/assets/todos.gif)
+![Example](https://raw.githubusercontent.com/frontyjs/fronty/assets/demo/todos.gif)
 
 ## Abstract
 
