@@ -1,4 +1,4 @@
-import { init } from '@frontyjs/core';
+import { init } from '@fronty/core';
 
 import './style.css';
 
