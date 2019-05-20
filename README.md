@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/frontyjs/fronty/assets/Fronty-logo-design-icon.png" width="25%" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/frontyjs/fronty/assets/logo/fronty-logo.svg?sanitize=true" width="25%" /></p>
 
 # fronty
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
