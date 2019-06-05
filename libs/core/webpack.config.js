@@ -1,7 +1,7 @@
 module.exports = {
   output: {
     filename: 'fronty.min.js',
-    library: 'fronty',
+    library: 'frontyLoader', // the loader module always publishes a `fronty` global, so we can't (and shouldn't) use that name
     libraryTarget: 'umd'
   }
 };
