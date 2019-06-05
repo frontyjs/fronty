@@ -3,8 +3,8 @@
 var angular = require('angular');
 
 module.exports = angular
-  .module('home', [require('angular-ui-router')])
+	.module('home', [require('angular-ui-router')])
 
-  .config(require('./home.config'))
+	.config(require('./home.config'))
 
-  .controller('HomeCtrl', require('./home.ctrl')).name;
+	.controller('HomeCtrl', require('./home.ctrl')).name;
