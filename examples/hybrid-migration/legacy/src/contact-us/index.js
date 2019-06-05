@@ -3,6 +3,6 @@
 var angular = require('angular');
 
 module.exports = angular
-  .module('contact-us', [require('angular-ui-router')])
+	.module('contact-us', [require('angular-ui-router')])
 
-  .config(require('./contact-us.config')).name;
+	.config(require('./contact-us.config')).name;

@@ -2,23 +2,23 @@
 
 /* @ngInject */
 function homeConfig($urlRouterProvider, $locationProvider, $stateProvider) {
-  $urlRouterProvider.rule(function($i, $location) {
-    var path = $location.path();
-    var normalized = path.toLowerCase();
-    if (path != normalized) return normalized;
-  });
+	$urlRouterProvider.rule(function($i, $location) {
+		var path = $location.path();
+		var normalized = path.toLowerCase();
+		if (path != normalized) return normalized;
+	});
 
-  $urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/');
 
-  $locationProvider.html5Mode(false);
+	$locationProvider.html5Mode(false);
 
-  $stateProvider.state('home', {
-    url: '/',
-    controller: 'HomeCtrl as home',
-    template: require('./home.html').default
-  });
+	$stateProvider.state('home', {
+		url: '/',
+		controller: 'HomeCtrl as home',
+		template: require('./home.html').default
+	});
 
-  console.log('homeConfig loaded');
+	console.log('homeConfig loaded');
 }
 
 module.exports = homeConfig;
