@@ -1,4 +1,4 @@
-import { init } from '@fronty/core';
+import { fronty } from '@fronty/core';
 
 import './style.css';
 
@@ -31,4 +31,4 @@ const modalApp = {
 	}
 };
 
-init(modalApp, reactApp);
+fronty.init(modalApp, reactApp);

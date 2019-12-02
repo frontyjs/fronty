@@ -52,8 +52,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			)
 	);
 
-	console.log(nodes);
-
 	init(...nodes).then(() => window.dispatchEvent(new Event('fronty.autoinit')));
 });
 
@@ -65,4 +63,4 @@ class Fronty extends HTMLElement {
 
 customElements.define('fronty-app', Fronty);
 
-export { fronty, apps, register, init };
+export { fronty, register };

@@ -1,5 +1,3 @@
-import cheerio from 'cheerio';
-
 const parseQuerystring = () =>
 	new URLSearchParams(location.search.replace(/^\?/, ''));
 
@@ -17,7 +15,7 @@ export const iframe = async ({
 	replaceElement
 }) => {
 	if (!url) {
-		throw new Error('Must supply url for iframe');
+		throw new Error(`Must supply url for iframe for app id ${id}`);
 	}
 
 	// Render the iframe
@@ -36,13 +34,16 @@ export const iframe = async ({
 	const request = await fetch(url);
 	const source = await request.text();
 
-	const $ = cheerio.load(source);
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(source, 'text/html');
 
-	$('head')
-		.prepend($('<base />').attr('href', url + '/'))
-		.html();
+	const base = document.createElement('base');
+	base.setAttribute('href', url + '/');
+	doc.head.prepend(base);
 
-	iFrame.contentDocument.open().write($.html());
+	const html = new XMLSerializer().serializeToString(doc);
+
+	iFrame.contentDocument.open().write(html);
 	iFrame.contentDocument.close();
 
 	// Setup initial routing on inner app - so when loading a page such as

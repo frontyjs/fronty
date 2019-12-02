@@ -7,9 +7,6 @@
 	"scripts": {
 		"build": "webpack -p --mode production --devtool source-map --progress"
 	},
-	"dependencies": {
-		"cheerio": "^1.0.0-rc.2"
-	},
 	"devDependencies": {
 		"@babel/core": "^7.4.4",
 		"@babel/preset-env": "^7.4.4",
