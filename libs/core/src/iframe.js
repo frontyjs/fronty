@@ -1,10 +1,3 @@
-const parseQuerystring = () =>
-	new URLSearchParams(location.search.replace(/^\?/, ''));
-
-const qsToURL = qs => {
-	return '?' + qs.toString().replace(/%2F/g, '/');
-};
-
 export const iframe = async ({
 	id,
 	container,
@@ -12,7 +5,7 @@ export const iframe = async ({
 	fronty,
 	onMount,
 	app,
-	replaceElement
+	replaceElement,
 }) => {
 	if (!url) {
 		throw new Error(`Must supply url for iframe for app id ${id}`);
@@ -46,47 +39,18 @@ export const iframe = async ({
 	iFrame.contentDocument.open().write(html);
 	iFrame.contentDocument.close();
 
-	// Setup initial routing on inner app - so when loading a page such as
-	// fronty/?app=url
-	// The app frame would be loaded at #url
-	// We fake a hashchange event so the inner framework can do its magic
-	{
-		const url = '#' + parseQuerystring().get(id);
-		iWindow.history.replaceState({}, '', url);
-		const fakeEvent = new HashChangeEvent('hashchange', {
-			oldURL: '#',
-			newURL: url
-		});
-		iWindow.location.hash = url;
-		iWindow.dispatchEvent(fakeEvent);
-	}
+	iWindow.addEventListener('load', (e) => {
+		const body = iFrame.contentDocument.body,
+			html = iFrame.contentDocument.documentElement;
 
-	// When changing the page inside an app, update the current url to point
-	// to the correct location - fronty/?app=url
-	iWindow.addEventListener('hashchange', () => {
-		const hash = iWindow.document.location.hash || '#';
-		if (hash.startsWith('#fronty/')) {
-			// If the hash starts with fronty/, it is a commant to fronty to navigate on _other_ apps
-			const [, target, ...locationParts] = hash.split('/');
-			const location = locationParts.join('/');
-			const targetApp = fronty.apps.get(target);
-			targetApp.window.document.location.hash = location;
-			console.log(`Setting url on ${target} to #${location}`);
-			iWindow.document.location.hash = '#';
+		const height = Math.max(
+			body.scrollHeight,
+			body.offsetHeight,
+			html.offsetHeight
+		);
 
-			if (targetApp.onNavigate) {
-				targetApp.onNavigate(target, location);
-			}
-			return;
-		}
+		iFrame.style.height = height + 'px';
 
-		const qs = parseQuerystring();
-		qs.set(id, hash.substring(1));
-		window.history.replaceState({}, '', qsToURL(qs));
-	});
-
-	// Support for onMount event inside apps
-	iWindow.addEventListener('DOMContentLoaded', e => {
 		const params = { container, fronty, app, frame: iFrame };
 
 		onMount = onMount || iWindow.onMount;
@@ -95,7 +59,7 @@ export const iframe = async ({
 
 	// When clicking "refresh iframe" in Chrome, the unload event is dispatched
 	// - we catch that to handle our own iframe-displaying semantics
-	iWindow.addEventListener('unload', async e => {
+	iWindow.addEventListener('unload', async (e) => {
 		await iframe({ id, container, url, fronty, app, replaceElement: iFrame });
 	});
 
