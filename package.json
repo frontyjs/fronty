@@ -1,7 +1,6 @@
 {
-	"name": "frontyjs",
+	"name": "fronty",
 	"private": true,
-	"version": "1.0.3",
 	"description": "Set of tools to orchestrate micro-frontend applications",
 	"main": "index.js",
 	"engines": {
