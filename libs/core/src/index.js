@@ -2,38 +2,54 @@ import { iframe } from './iframe';
 import { js } from './js';
 
 const fronty = window.fronty || (window.fronty = {});
-if (!fronty.apps) {
-	fronty.apps = new Map();
-}
 
-const types = { iframe, js };
+const apps = (fronty.apps = fronty.apps || new Map());
+
+const Types = (fronty.Types =
+	fronty.Types ||
+	(() => {
+		const types = { iframe, js };
+
+		const add = (name, code) => {
+			types[name] = code;
+		};
+
+		const get = (name) => types[name];
+
+		return { add, get };
+	}))();
 
 const register = (fronty.register =
 	fronty.register ||
 	(({ id, ...options }) => {
 		if (!id) throw new Error('You need to provide a unique app id.');
 
-		if (fronty.apps.has(id)) {
+		if (apps.has(id)) {
 			Object.assign(options, fronty.apps.get(id));
 		}
 
-		return fronty.apps.set(id, options);
+		return apps.set(id, options);
 	}));
 
 const init = (fronty.init =
 	fronty.init ||
-	(async (...apps) => {
-		apps.forEach(register);
+	(async (...args) => {
+		args.forEach(register);
 
-		for (const [id, app] of fronty.apps) {
-			const { url, type = 'iframe', container, onMount } = app;
+		for (const [id, app] of apps) {
+			const { url, type = 'iframe', container, onMount, initialized } = app;
 
-			const applyType = types[type];
+			if (initialized) continue;
+
+			const applyType = Types.get(type);
 
 			try {
-				if (applyType)
+				if (applyType) {
+					app.initialized = true;
 					await applyType({ container, url, fronty, id, app, onMount });
+				}
 			} catch (e) {
+				app.initialized = false;
 				console.error(e);
 			}
 		}
@@ -41,18 +57,21 @@ const init = (fronty.init =
 		return fronty;
 	}));
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
 	const nodes = Array.from(document.querySelectorAll('fronty-app')).map(
-		container =>
+		(container) =>
 			Object.assign(
 				{ container },
 				...[...container.attributes].map(({ name, value }) => ({
-					[name]: value
+					[name]: value,
 				}))
 			)
 	);
 
-	init(...nodes).then(() => window.dispatchEvent(new Event('fronty.autoinit')));
+	if (!nodes.length) return;
+
+	await init(...nodes);
+	window.dispatchEvent(new Event('fronty.autoinit'));
 });
 
 class Fronty extends HTMLElement {
@@ -63,4 +82,4 @@ class Fronty extends HTMLElement {
 
 customElements.define('fronty-app', Fronty);
 
-export { fronty, register };
+export { fronty, init, apps, register, Types };
