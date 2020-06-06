@@ -6,64 +6,85 @@ export const iframe = async ({
 	onMount,
 	app,
 	replaceElement,
-}) => {
-	if (!url) {
-		throw new Error(`Must supply url for iframe for app id ${id}`);
-	}
+}) =>
+	new Promise(async (resolve, reject) => {
+		if (!url) {
+			return reject(`Must supply url for iframe for app id ${id}`);
+		}
 
-	// Render the iframe
-	const iFrame = document.createElement('iframe');
-	if (replaceElement) {
-		replaceElement.replaceWith(iFrame);
-	} else {
-		container.appendChild(iFrame);
-	}
+		// Render the iframe
+		const iFrame = document.createElement('iframe');
+		iFrame.height = 0;
 
-	const iWindow = iFrame.contentWindow;
+		if (replaceElement) {
+			replaceElement.replaceWith(iFrame);
+		} else {
+			container.appendChild(iFrame);
+		}
 
-	iWindow.fronty = fronty;
-	iFrame.setAttribute('fronty-app-name', id);
+		iFrame.setAttribute('fronty-app-name', id);
 
-	const request = await fetch(url);
-	const source = await request.text();
+		const request = await fetch(url);
+		const source = await request.text();
 
-	const parser = new DOMParser();
-	const doc = parser.parseFromString(source, 'text/html');
+		iFrame.addEventListener('load', (e) => {
+			const iWindow = iFrame.contentWindow;
+			iWindow.fronty = fronty;
 
-	const base = document.createElement('base');
-	base.setAttribute('href', url + '/');
-	doc.head.prepend(base);
+			app.window = iWindow;
+			app.iframe = iFrame;
+			app.container = container;
 
-	const html = new XMLSerializer().serializeToString(doc);
+			const html = iWindow.document.documentElement;
+			const body = iWindow.document.body;
 
-	iFrame.contentDocument.open().write(html);
-	iFrame.contentDocument.close();
+			const width = Math.max(
+				body.scrollWidth,
+				body.offsetWidth,
+				html.offsetWidth,
+				html.scrollWidth
+			);
 
-	iWindow.addEventListener('load', (e) => {
-		const body = iFrame.contentDocument.body,
-			html = iFrame.contentDocument.documentElement;
+			const height = Math.max(
+				body.scrollHeight,
+				body.offsetHeight,
+				html.offsetHeight,
+				html.scrollHeight
+			);
 
-		const height = Math.max(
-			body.scrollHeight,
-			body.offsetHeight,
-			html.offsetHeight
-		);
+			iFrame.width = width;
+			iFrame.height = height;
 
-		iFrame.style.height = height + 'px';
+			// When clicking "refresh iframe" in Chrome, the unload event is dispatched
+			// - we catch that to handle our own iframe-displaying semantics
+			iWindow.addEventListener('unload', async (e) => {
+				await iframe({
+					id,
+					container,
+					url,
+					fronty,
+					app,
+					replaceElement: iFrame,
+				});
+			});
 
-		const params = { container, fronty, app, frame: iFrame };
+			const params = { container, fronty, app: { id, ...app } };
 
-		onMount = onMount || iWindow.onMount;
-		if (onMount) onMount(params);
+			onMount = onMount || iWindow.onMount;
+			if (onMount) onMount(params);
+
+			resolve();
+		});
+
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(source, 'text/html');
+
+		const base = document.createElement('base');
+		base.setAttribute('href', url + '/');
+		doc.head.prepend(base);
+
+		const html = new XMLSerializer().serializeToString(doc);
+
+		iFrame.contentDocument.open().write(html);
+		iFrame.contentDocument.close();
 	});
-
-	// When clicking "refresh iframe" in Chrome, the unload event is dispatched
-	// - we catch that to handle our own iframe-displaying semantics
-	iWindow.addEventListener('unload', async (e) => {
-		await iframe({ id, container, url, fronty, app, replaceElement: iFrame });
-	});
-
-	app.window = iWindow;
-	app.iframe = iFrame;
-	app.container = container;
-};
