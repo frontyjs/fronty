@@ -1,10 +1,10 @@
 {
-	"name": "@fronty/javascript",
+	"name": "@fronty/simple",
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "webpack-dev-server --mode development -d --progress --content-base ./"
+		"start": "webpack-dev-server --mode development -d --progress --content-base ../../apps"
 	},
 	"devDependencies": {
 		"css-loader": "^3.5.3",

@@ -1,0 +1,49 @@
+@import 'https://unpkg.com/normalize.css@8.0.1/normalize.css';
+
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	display: grid;
+	grid-gap: 0;
+	grid-template-columns: 200px auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		'header  header  header'
+		'sidebar content content'
+		'footer  footer  footer';
+}
+
+iframe {
+	width: 100%;
+	flex: 1;
+	border: 0;
+}
+
+.header {
+	display: flex;
+	flex: 0;
+	grid-area: header;
+	border-bottom: 1px solid;
+}
+
+.main {
+	display: flex;
+	flex: 1;
+	overflow: scroll;
+	grid-area: content;
+}
+
+.footer {
+	display: flex;
+	flex: 0;
+	grid-area: footer;
+	border-top: 1px solid;
+}
+
+.aside {
+	display: flex;
+	flex: 0;
+	grid-area: sidebar;
+}

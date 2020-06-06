@@ -5,9 +5,11 @@ import './style.css';
 	const app1Container = document.createElement('header');
 	const app2Container = document.createElement('main');
 	const app3Container = document.createElement('footer');
+	const app4Container = document.createElement('aside');
 
 	document.body.appendChild(app1Container);
 	document.body.appendChild(app2Container);
+	document.body.appendChild(app4Container);
 	document.body.appendChild(app3Container);
 
 	const app1 = {
@@ -37,5 +39,14 @@ import './style.css';
 		},
 	};
 
-	const fronty = await init(app1, app2, app3);
+	const app4 = {
+		id: 'app4',
+		url: '/app4/',
+		container: app4Container,
+		onMount({ frame, app }) {
+			console.log(app);
+		},
+	};
+
+	const fronty = await init(app1, app2, app3, app4);
 })();
