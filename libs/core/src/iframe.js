@@ -85,6 +85,9 @@ export const iframe = async ({
 
 		const html = new XMLSerializer().serializeToString(doc);
 
-		iFrame.contentDocument.open().write(html);
+		const textArea = document.createElement('textArea');
+		textArea.innerHTML = html;
+
+		iFrame.contentDocument.open().write(textArea.value);
 		iFrame.contentDocument.close();
 	});
