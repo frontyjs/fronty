@@ -1,6 +1,20 @@
 import { iframe } from './iframe';
 import { js } from './js';
 
+const once = (fn) => {
+	const init = (...args) => {
+		if (init.called) {
+			console.log('Fronty `init` has already been called!');
+			return init.value;
+		}
+		init.called = true;
+		return (init.value = fn(...args));
+	};
+
+	init.called = false;
+	return init;
+};
+
 const fronty = window.fronty || (window.fronty = {});
 
 const apps = (fronty.apps = fronty.apps || new Map());
@@ -33,23 +47,19 @@ const register = (fronty.register =
 
 const init = (fronty.init =
 	fronty.init ||
-	(async (...args) => {
+	once(async (...args) => {
 		args.forEach(register);
 
 		for (const [id, app] of apps) {
-			const { url, type = 'iframe', container, onMount, initialized } = app;
-
-			if (initialized) continue;
+			const { url, type = 'iframe', container, onMount } = app;
 
 			const applyType = Types.get(type);
 
 			try {
 				if (applyType) {
-					app.initialized = true;
 					await applyType({ container, url, fronty, id, app, onMount });
 				}
 			} catch (e) {
-				app.initialized = false;
 				console.error(e);
 			}
 		}
