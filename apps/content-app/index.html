@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>App 2</title>
+
+		<style>
+			div:not(:first-of-type) {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fronty">
+			<h1>Fronty</h1>
+
+			<a href="/#/about">Check out About page</a>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam
+				atque dignissimos doloribus earum eos, est eum hic laudantium libero
+				magnam, magni minus odio, provident quas quis sit vel voluptas.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis,
+				commodi consequuntur dolor eius eum explicabo facere maiores numquam
+				obcaecati qui quia quibusdam quod reprehenderit sunt velit! Accusamus
+				consectetur delectus quidem.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut commodi
+				eaque et exercitationem expedita facere minus molestias nam neque,
+				reiciendis rerum voluptates voluptatibus. Aperiam deleniti minus
+				mollitia repellendus tempora voluptates!
+			</p>
+		</div>
+
+		<div class="about">
+			<h1>About</h1>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+				amet asperiores cumque magni molestiae molestias natus omnis porro
+				possimus reprehenderit, repudiandae soluta suscipit voluptas.
+				Dignissimos enim explicabo minus nam sint.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
+				asperiores beatae cupiditate distinctio earum et exercitationem facilis
+				iste itaque laudantium minus molestias, neque nulla possimus provident
+				reiciendis soluta tempore voluptatibus.
+			</p>
+		</div>
+
+		<div class="contact">
+			<h1>Contact</h1>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
+				corporis earum in modi. Cum doloremque eligendi enim eum, id maxime
+				necessitatibus, nesciunt omnis, quasi recusandae repellat vero.
+				Molestiae, repellat, tempore.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+				commodi deleniti fuga, minus molestias nisi sint sit. Delectus dolorum
+				facilis impedit ipsa, iusto minima modi, nihil obcaecati quisquam quos
+				sequi.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad alias
+				asperiores aspernatur autem, consequuntur dicta illum inventore maiores
+				minus nesciunt nostrum obcaecati odit, porro quibusdam sit tempore
+				voluptatem?
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet
+				architecto aut dicta dolorem enim esse ipsam iusto laboriosam laborum
+				nemo odit possimus quisquam, quod sint velit veniam voluptatibus.
+				Nostrum.
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci,
+				alias aperiam cum dolorem error iusto magnam nisi nulla quaerat! Atque
+				quas rem voluptatibus! Facilis ipsa nobis non nulla obcaecati?
+			</p>
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+				cupiditate dolorem dolorum eaque hic impedit incidunt inventore, magnam
+				modi neque nihil obcaecati omnis quasi quis quo similique sit veritatis
+				vero.
+			</p>
+		</div>
+	</body>
+
+	<script>
+		window.addEventListener('hashchange', (e) => {
+			const page = window.location.hash.replace('#/', '') || 'fronty';
+
+			const pages = Array.from(document.querySelectorAll('div'));
+
+			pages.forEach((p) => (p.style.display = 'none'));
+
+			document.querySelector(`.${page}`).style.display = 'block';
+
+			window.frameElement.height = document.documentElement.offsetHeight;
+		});
+	</script>
+</html>

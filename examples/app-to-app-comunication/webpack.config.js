@@ -11,5 +11,5 @@ module.exports = {
 		],
 	},
 
-	plugins: [new HtmlPlugin({ title: 'Fronty Simple' })],
+	plugins: [new HtmlPlugin({ title: 'Fronty App To App Communication' })],
 };

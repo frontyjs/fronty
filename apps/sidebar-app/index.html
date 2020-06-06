@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>App 4</title>
+		<style>
+			ul {
+				display: flex;
+				flex-direction: column;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				display: flex;
+				border: 1px solid;
+				margin-bottom: 10px;
+			}
+
+			li a {
+				flex: 1;
+				color: blue;
+				text-decoration: none;
+				padding: 10px;
+			}
+
+			li a.active {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a href="/#">Fronty</a></li>
+			<li><a href="/#/about">About</a></li>
+			<li><a href="/#/contact">Contact</a></li>
+		</ul>
+
+		<script>
+			const links = Array.from(document.querySelectorAll('ul li > a'));
+
+			const setActive = (hash) => {
+				const el = links.find((el) => new URL(el.href).hash === hash);
+				if (!el) return;
+
+				links.forEach((el) => el.classList.remove('active'));
+				el.classList.add('active');
+			};
+
+			window.addEventListener('DOMContentLoaded', (e) => {
+				setActive('');
+			});
+
+			window.addEventListener('hashchange', (e) => {
+				setActive(new URL(e.newURL).hash);
+			});
+		</script>
+	</body>
+</html>

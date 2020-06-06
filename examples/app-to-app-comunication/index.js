@@ -14,7 +14,7 @@ import './style.css';
 
 	const headerApp = {
 		id: 'header',
-		url: '/header-app/',
+		url: '/header-app',
 		container: header,
 		onMount({ app }) {
 			console.log(app);
@@ -23,16 +23,24 @@ import './style.css';
 
 	const contentApp = {
 		id: 'content',
-		url: '/content-app/',
+		url: '/content-app',
 		container: content,
 		onMount({ app }) {
-			console.log(app);
+			const win = app.iframe.contentWindow;
+
+			win.addEventListener('hashchange', (e) => {
+				fronty.apps.get('sidebar').window.location.hash =
+					e.target.location.hash;
+
+				// const page = e.target.location.hash.replace('#', '') || '/';
+				// window.history.pushState(null, null, '#' + page);
+			});
 		},
 	};
 
 	const footerApp = {
 		id: 'footer',
-		url: '/footer-app/',
+		url: '/footer-app',
 		container: footer,
 		onMount({ app }) {
 			console.log(app);
@@ -41,10 +49,18 @@ import './style.css';
 
 	const sidebarApp = {
 		id: 'sidebar',
-		url: '/sidebar-app/',
+		url: '/sidebar-app',
 		container: sidebar,
 		onMount({ app }) {
-			console.log(app);
+			const win = app.iframe.contentWindow;
+
+			win.addEventListener('hashchange', (e) => {
+				fronty.apps.get('content').window.location.hash =
+					e.target.location.hash;
+
+				// const page = e.target.location.hash.replace('#', '') || '/';
+				// window.history.pushState(null, null, '#' + page);
+			});
 		},
 	};
 
