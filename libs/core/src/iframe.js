@@ -6,6 +6,7 @@ export const iframe = async ({
 	onMount,
 	app,
 	replaceElement,
+	urlObject,
 }) =>
 	new Promise(async (resolve, reject) => {
 		if (!url) {
@@ -65,6 +66,7 @@ export const iframe = async ({
 					fronty,
 					app,
 					replaceElement: iFrame,
+					urlObject: new URL(iWindow.location),
 				});
 			});
 
