@@ -21,7 +21,7 @@
 		"husky": "^4.0.9",
 		"lerna": "^3.19.0",
 		"prettier": "^2.0.2",
-		"pretty-quick": "^2.0.1"
+		"pretty-quick": "^3.0.0"
 	},
 	"prettier": {
 		"printWidth": 80,
