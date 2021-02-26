@@ -9,7 +9,7 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"css-loader": "^3.4.0",
+		"css-loader": "^5.1.0",
 		"html-webpack-plugin": "^4.0.1",
 		"style-loader": "^1.1.2",
 		"webpack": "^4.27.1",
