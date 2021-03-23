@@ -9,7 +9,7 @@
 	"dependencies": {
 		"angular": "^1.4.5",
 		"angular-ui-router": "^1.0.26",
-		"react": "^16.8.6",
+		"react": "^17.0.2",
 		"react-dom": "^16.8.6"
 	},
 	"devDependencies": {
